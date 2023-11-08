@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!DOCTYPE html>
+
+  <head>
+    <title>Решение задачи в HTML</title>
+    <p>Дано вещественное число A. Вычислить х = a**2+4+5  при а < 62; в противном случае x = 1/(a**2) + 4a + 5).</p>
+    <script>
+      function calculate() {
+        var a = parseFloat(document.getElementById('a').value);
+        var x;
+
+        if (a < 62) {
+          x = a ** 2 + 4 + 5;
+        } else {
+          x = (1 / (a ** 2)) + 4 * a + 5;
+        }
+
+        document.getElementById('result').innerHTML = 'Результат: ' + x;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Решение задачи в HTML</h1>
+    <label for="a">Введите число A:</label>
+    <input type="text" id="a" name="a"/>
+    <button onclick="calculate()">Вычислить</button>
+    <div id="result"></div>
+  </body>
+
+
+</html>

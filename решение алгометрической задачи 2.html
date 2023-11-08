@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<head>
+    <title>Решение квадратного уравнения</title>
+    <script>
+        function solveEquation() {
+            // Получить значения коэффициентов a, b и c из полей ввода
+            var a = parseFloat(document.getElementById('coefA').value);
+            var b = parseFloat(document.getElementById('coefB').value);
+            var c = parseFloat(document.getElementById('coefC').value);
+
+            // Вычислить дискриминант
+            var discriminant = b * b - 4 * a * c;
+
+            // Проверить значение дискриминанта
+            if (discriminant > 0) {
+                // Два действительных корня
+                var x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                var x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                document.getElementById('output').textContent = 'У уравнения два действительных корня: x1 = ' + x1 + ', x2 = ' + x2;
+            } else if (discriminant === 0) {
+                // Один действительный корень
+                var x = -b / (2 * a);
+                document.getElementById('output').textContent = 'У уравнения один действительный корень: x = ' + x;
+            } else {
+                // Нет действительных корней
+                document.getElementById('output').textContent = 'У уравнения нет действительных корней.';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Решение квадратного уравнения</h1>
+    <p>Введите коэффициенты уравнения ax^2 + bx + c = 0:</p>
+    <label for="coefA">a:</label>
+    <input type="number" id="coefA" required><br>
+    <label for="coefB">b:</label>
+    <input type="number" id="coefB" required><br>
+    <label for="coefC">c:</label>
+    <input type="number" id="coefC" required><br>
+    <button onclick="solveEquation()">Решить</button>
+    <p id="output"></p>
+</body>
+<body>
+<script>
+    $(document).ready(function() {
+      $('#equationForm').submit(function(event) {
+        event.preventDefault();
+
+        // Получение значений коэффициентов из формы
+        var a = parseFloat($('#a').val());
+        var b = parseFloat($('#b').val());
+        var c = parseFloat($('#c').val());
+
+        // AJAX-запрос на удаленный сервер
+        $.ajax({
+          url: 'https://yandex.ru/search/?text=lbcrbhvbyfyn&search_source=dzen_desktop_safe&lr=213',
+          type: 'POST',
+          data: { a: a, b: b, c: c },
+          success: function(response) {
+            $('#result').text('Решение: ' + response.result);
+          },
+          error: function() {
+            $('#result').text('Произошла ошибка при отправке запроса.');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
